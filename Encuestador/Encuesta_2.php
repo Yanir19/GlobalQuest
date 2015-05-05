@@ -73,8 +73,8 @@
                       </ul>
                       
                       
-                
-                       <button type="button" class="btn btn-danger">Siguiente</button>
+                     
+                        <a type="button" class="btn btn-danger"   href="http://localhost/GlobalQuest2/Encuestador/Encuesta_3.php">Siguiente</a>
                 </div>
                
              </div>

@@ -19,7 +19,7 @@
        <div class="container">
            <div class="col-lg-6">
            <div class="panel panel-danger">
-                <div class="panel-heading">¿Conoce el término cáncer de mama?</div>
+                <div class="panel-heading">¿Te gustaría asistir a un Focus Group informativo sobre la detección precoz del cáncer de mama?</div>
                    <div class="panel-body">
                        
                         <ul class="list-group">
@@ -29,11 +29,6 @@
                    <li class="list-group-item"><div class="radio">
                         <label><input type="radio" name="optradio">No</label>
                       </div></li>
-                      
-                      <h5> Insertar una breve descripción del cáncer de mama.</h5>
-                      <li>
-                       <textarea class="form-control" rows="3"></textarea>
-                      </li>
                       
                 </ul>
                        <button type="button" class="btn btn-danger">Siguiente</button>
