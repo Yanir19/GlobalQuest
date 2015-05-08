@@ -104,7 +104,7 @@
         flightPath.setMap(map);
         
         google.maps.event.addListener(flightPath, 'click', function(){
-            alert("Si ves esto, debes chupar el pene de Yanir");
+            alert("Acabas de presionar en una zona de encuesta.");
         });
         
         }

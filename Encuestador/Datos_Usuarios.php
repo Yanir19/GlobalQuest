@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <?php
-    include ("../Conexion/BD_Conector.php");
+    include ("../Conexion/Datos_de_encuesta.php");
 ?>
 <html lang="es">
   <head>
@@ -28,12 +28,12 @@
                 <div class="panel panel-danger">
                     <div class="panel-heading">Datos del usario</div>
                     <div class="panel-body">
-
+                        <form action="Encuesta_1.php" method="post" >
                          <div class="input-group">
-                             <input type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1">
+                             <input type="text" name="nombre" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1">
                          </div>
                         <div class="input-group">
-                             <input type="text" class="form-control" placeholder="Edad" aria-describedby="basic-addon1">
+                            <input type="text" name="edad" class="form-control" placeholder="Edad" aria-describedby="basic-addon1">
                          </div>
                         <br>
                         <div class="dropdown">
@@ -52,7 +52,10 @@
                          </div>
 
                         <br>
-                        <a type="button" class="btn btn-danger"   href="http://localhost/GlobalQuest2/Encuestador/Encuesta_1.php">Siguiente</a>
+                        <input type="submit" name="enviar" value="enviar">
+                  <!--      <a type="button" class="btn btn-danger" href="http://localhost/GlobalQuest2/Encuestador/Encuesta_1.php" Siguiente</a>
+                        -->
+                    </form >
                      </div>
 
                  </div>

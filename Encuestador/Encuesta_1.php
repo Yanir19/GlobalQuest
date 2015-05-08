@@ -8,6 +8,8 @@
     <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
   
   </head>
+  
+ 
   <body>
       <header>
           <title>Encuesta #1</title>
@@ -15,6 +17,16 @@
               <h1>Encuesta #1</h1>
           </div>
       </header>
+      
+       <?php
+  
+            $nombre = $_POST['nombre'];;
+            $edad = $_POST['edad'];;
+            //$sexo = "";
+            //$base = "globalquest";
+
+            echo " {$nombre} : {$edad}";
+        ?>
       
        <div class="container">
            <div class="col-lg-6">
@@ -42,6 +54,7 @@
              </div>
         </div>       
        </div>
+      
       <section class="main">
           
       </section>
