@@ -1,3 +1,7 @@
+<?php
+    // Start the session
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -15,6 +19,22 @@
               <h1>Plantilla #3</h1>
           </div>
       </header>
+        
+      <?php  
+        $_SESSION["Primero_que_piensa_4"] =  $_POST['Primero_que_piensa_4'] ;
+        $_SESSION["otro-pensamiento"] =  $_POST['otro-pensamiento'] ;
+        echo $_SESSION["edad"] . "/ " ;
+        echo $_SESSION["escuela"] . "/ ";
+        echo $_SESSION["Respuesta_1"] . "/ ";
+        echo $_SESSION["Descripcion"] . "/ ";
+        echo $_SESSION["respuesta_2"] . "/ ";
+        echo $_SESSION["frecuencia_2"] . "/ ";
+        echo $_SESSION["conoce-otros-examenes_2"] . "/ " ;
+        echo $_SESSION["otros-examenes_2"] . "/ " ;
+        echo $_SESSION["Razones_ning_exam_3"] . "/ " ;
+        echo $_SESSION["Primero_que_piensa_4"] . "/ " ;
+        echo $_SESSION["otro-pensamiento"] . "/ " ;
+      ?>
       
        <div class="container">
            <div class="col-lg-6">

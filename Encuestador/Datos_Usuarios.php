@@ -27,38 +27,38 @@
            <div class="col-lg-6">
                 <div class="panel panel-danger">
                     <div class="panel-heading">Datos del usario</div>
-                    <div class="panel-body">
-                        <form action="Encuesta_1.php" method="post" >
-                         <div class="input-group">
-                             <input type="text" name="nombre" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1">
-                         </div>
-                        <div class="input-group">
-                            <input type="text" name="edad" class="form-control" placeholder="Edad" aria-describedby="basic-addon1">
-                         </div>
-                        <br>
-                        <div class="dropdown">
-                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
-                                Sexo
-                                <span class="caret"></span>
-                              </button>
-                              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
-                                <li role="presentation"><a role="menuitem" tabindex="1" href="#">Masculino</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="2" href="#">Femenino</a></li>
-                              </ul>
-                          </div>
-                        <br>
-                        <div class="input-group">
-                             <input type="text" class="form-control" placeholder="Escuela" aria-describedby="basic-addon1">
+                        <div class="panel-body">
+                            <form action="Encuesta_1.php" method="post" >
+                                <div class="input-group">
+                                    <input type="text" name="nombre" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1">
+                                </div>
+                               <div class="input-group">
+                                   <input type="text" name="edad" class="form-control" placeholder="Edad" aria-describedby="basic-addon1">
+                                </div>
+                               <br>
+                               
+                               <h5> Sexo </h5>
+                               <ul class="list-group">
+                                    <li class="list-group-item"> <div class="radio">
+                                         <label><input type="radio" name="sexo" value="Masculino">Masculino</label>
+                                       </div></li>
+                                    <li class="list-group-item"><div class="radio" >
+                                         <label><input type="radio" name="sexo" value="Femenino" >Femenino</label>
+                                       </div></li>
+                                </ul>
+
+                               <br>
+                               <div class="input-group">
+                                    <input type="text" class="form-control" name="escuela" placeholder="Escuela" aria-describedby="basic-addon1">
+                                </div>
+
+                               <br>
+                               <input type="submit" name="enviar" value="enviar">
+
+                            </form >
                          </div>
 
-                        <br>
-                        <input type="submit" name="enviar" value="enviar">
-                  <!--      <a type="button" class="btn btn-danger" href="http://localhost/GlobalQuest2/Encuestador/Encuesta_1.php" Siguiente</a>
-                        -->
-                    </form >
-                     </div>
-
-                 </div>
+                </div>
             </div>     
         </div>
     </from>
