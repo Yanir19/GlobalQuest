@@ -31,7 +31,7 @@
        <div class="container">
            <div class="col-lg-6">
            <div class="panel panel-danger">
-                <div class="panel-heading">¿Conoce el término cáncer de mama?</div>
+                <div class="panel-heading col-xs-12 col-sm-12">¿Conoce el término cáncer de mama?</div>
                    <div class="panel-body">
                        
                         <ul class="list-group">
