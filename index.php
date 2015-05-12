@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -6,74 +8,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="css/textoestilos1.css" rel="stylesheet">
+	<link href="css/estilos2.css" rel="stylesheet">
+	
+	
+
   
   </head>
-  <body>
+  <body onLoad="localizame()">
       
-                <nav class="navbar navbar-default">
-            <div class="container-fluid">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">GobalQuest</a>
+		  <!-- Cabecera de la pagina -->
+    
+     <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <div class="navbar-brand">
+                <h3> GLOBALQUEST</h3>
               </div>
-
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                  <li class="active"><a href="#">Mapa <span class="sr-only">(current)</span></a></li>
-                  <li><a href="#">Encuestas</a></li>
-              <!--    <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Another action</a></li>
-                      <li><a href="#">Something else here</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">Separated link</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">One more separated link</a></li>
-                    </ul>
-                  </li> -->
-                </ul>
-                <form class="navbar-form navbar-left navbar-right" role="search">
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="for-individuals"><a href="encontrousuario.php">Encuestas</a></li>
+                <li class="for-providers"><a href="encontrousuario.php">Quienes somos</a></li>
+              </ul>
+			 
+                <form method="POST" action="validar_usuario.php"  class="navbar-form navbar-left navbar-right" role="search">
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Seudonimo">
-                    <input type="text" class="form-control" placeholder="contraseña">
+                    <input name="n_usuario" type="text" class="form-control" placeholder="Usuario">
+                    <input  name="pwd" type="text" class="form-control" placeholder="contraseña">
                   </div>
-                  <button type="submit" class="btn btn-default">Ingresar</button>
+                  <button  name="enviar_btns"type="submit" class="btn btn-default" value="enviar_btn">Ingresar</button>
                 </form>
-             <!--   <ul class="nav navbar-nav navbar-right">
-                     <li><a href="#">Link</a></li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Another action</a></li>
-                      <li><a href="#">Something else here</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">Separated link</a></li>
-                    </ul>
-                  </li> -->
-                </ul>
-              </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-          </nav>
-    
-          
 
+            </div><!--/.nav-collapse -->
+          </div>
+        </div>
+      </div>
+    </div>
     
+	<!-- Contenido de la pagina -->
+	<header>
+	  <div class="container" >
+		<div class="row">
+		  <div class="col-sm-12">	
+			<h2>ENCUESTAS A TU ALCANCE </h2>
+			</br>
+		  </div>
+		  
+		</div>
+		
+		<div class="row" align="right" >
+		  <div class="col-sm-12">
+			<h1>Nunca habia sido tan sencillo</h1>
+		  </div>
+		</div>
+	  </div>
+    </header>
+	
+  <!-- Footer de la pagina -->
+   <footer class="fixed">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 copyright">
+            <p>2015 GlobalQuest, Inc. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+   </footer>
   
       
-      
-      
+	
+		
+		
       <section class="main">
       </section>
+	  
+	  
+	  
+	  
+	  
     
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
