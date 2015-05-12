@@ -223,7 +223,7 @@ function validar(){
                                     <label><input type="radio" name="primero_que_piensa_4" value="nada" checked>Nada</label>
                                 </li>
                                 <li class=" col-xs-6 col-sm-6 ">
-                                    <label><input type="radio" name="primero_que_piensa_4" value="felicidad" >Feicidad</label>
+                                    <label><input type="radio" name="primero_que_piensa_4" value="felicidad" >Felicidad</label>
                                 </li>  
                                 <br>
                                 <li class=" col-xs-6 col-sm-6 "> 
@@ -252,7 +252,7 @@ function validar(){
                                 </li>
                                 <li class=" col-xs-6 col-sm-6 ">
                                     <label><input type="radio" name="primero_que_piensa_4">Otro (Escriba)</label>
-                                  <!--  <input type="text" class="form-control" name="primero_que_piensa_4"> -->
+                                    <input type="text" class="form-control" name="primero_que_piensa_3"> 
                                     <br> 
                                 </li> 
                             </ul>

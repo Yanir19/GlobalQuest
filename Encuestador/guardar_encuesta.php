@@ -22,6 +22,7 @@ $razones_ning_exam_2 = $_POST['razones_ning_exam_2'];
 
 // PARTE 3
 $primero_que_piensa_3 = $_POST['primero_que_piensa_4'];
+$primero_que_piensa_34 = $_POST['primero_que_piensa_3'];
 $respuesta_3 = $_POST['respuesta_3'];
 $reaccion_3 = $_POST['reaccion_3'];
 
@@ -31,8 +32,12 @@ $medio_4 = $_POST['medio_4'];
 $redes_4 = $_POST['redes_4'];
 $focus_group_4 = $_POST['focus_group_4'];
 
+if ($primero_que_piensa_34){
+    $primero_que_piensa_3 = $primero_que_piensa_34;
+}
 
-echo "PARTE 1<br>R1 = $respuesta1<br>D1 = $descripcion1<br><br>PARTE 2<br>R2 = $respuesta_2<br>Frecuencia = $frecuencia_2<br>Otros Examenes = $otros_examenes_2<br>Razones ningun examen = $razones_ning_exam_2<br><br>PARTE 3<br>Primero que piensa = $primero_que_piensa_3<br>Familia Pesenta? = $respuesta_3<br>Reaccion = $reaccion_3<br><br>PARTE 4<br>Recibir info = $respuesta_4<br>Medio = $medio_4<br>Redes = $redes_4<br>Focus Group = $focus_group_4<br><br>";
+
+echo "<br>DATOS ENCUESTADO<br>edad = $edad<br>sexo = $sexo<br>escuela = $escuela<br>E-mail = $email<br><br>PARTE 1<br>R1 = $respuesta1<br>D1 = $descripcion1<br><br>PARTE 2<br>R2 = $respuesta_2<br>Frecuencia = $frecuencia_2<br>Otros Examenes = $otros_examenes_2<br>Razones ningun examen = $razones_ning_exam_2<br><br>PARTE 3<br>Primero que piensa = $primero_que_piensa_3<br>Familia Pesenta? = $respuesta_3<br>Reaccion = $reaccion_3<br><br>PARTE 4<br>Recibir info = $respuesta_4<br>Medio = $medio_4<br>Redes = $redes_4<br>Focus Group = $focus_group_4<br><br>";
 
 if (!$edad || !$sexo || !$escuela || !$respuesta1 || !$descripcion1 || !$respuesta_2 || !$frecuencia_2 || !$otros_examenes_2 || !$razones_ning_exam_2 || !$primero_que_piensa_3 || !$respuesta_3 || !$reaccion_3 || !$respuesta_4 || !$medio_4 || !$redes_4 || !$focus_group_4){
     echo '<script type= "text/javascript"> alert("NOTA: Todos los campos son requeridos para guardarse en la BD."); </script>';
