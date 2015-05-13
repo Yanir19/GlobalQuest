@@ -1,3 +1,4 @@
+
 <?php
 
 $root = "localhost";
@@ -12,3 +13,5 @@ if(!(mysql_select_db($base)))
 else
     echo 'La conexion se ha realizado con exito <br />';
 
+
+?>
