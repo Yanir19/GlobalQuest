@@ -1,16 +1,15 @@
 
 <!DOCTYPE html>
+<?php
+    include ("../Conexion/Datos_de_encuesta.php");
+?>
+
+
 <html>
 
 <head>
     
-    <script type="text/javascript"
-      src="http://maps.googleapis.com/maps/api/js?sensor=false">
-    </script>   
     
-    <script type="text/javascript"
-      src="http://code.jquery.com/jquery-2.0.3.min.js">
-    </script>  
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +18,12 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="../css/estilos.css">
+    
+    <script type="text/javascript"  src="http://maps.googleapis.com/maps/api/js?sensor=false"> </script>   
+    
+    <script type="text/javascript"  src="http://code.jquery.com/jquery-2.0.3.min.js"> </script>  
+    
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
     
     
     <style type="text/css">
@@ -38,7 +43,6 @@
         $(document).on("ready", function (){
             
         var punto = new google.maps.LatLng(8.300586, -62.715552);
-            
 
         var mapProp = {
           center:punto,
@@ -55,6 +59,8 @@
             coordenadas = coordenadas.replace("(","");
             coordenadas = coordenadas.replace(")","");
             var lista = coordenadas.split(",");
+            alert(lista[0]);
+            alert(lista[1]);
             var direccion = new google.maps.LatLng(lista[0],lista[1]);
             //alert(direccion);
        /*     
@@ -75,16 +81,20 @@
                 fillOpacity:0.4
               });
               
-            myCity  
+               var variable_java = "soy la variablr que buscas";
+            
+            $("#contenedor").load("Radio.php", {direccion:lista}); 
+              
+            google.maps.event.addListener(myCity, 'click', function(){
+                myCity.setMap(null);
+            });  
              myCity.setMap(map);
         });
-            
-       
-           
-           
-        });
+    });
 
     </script> 
+    
+
     
 </head>
 
@@ -94,6 +104,11 @@
    
     
 <body onload="initialize()"> 
+    
+       <section id="contenedor" style="border:solid 1px black;heigt:100px;">
+            
+            
+        </section>
     
      <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -126,9 +141,9 @@
     </div><!-- /.container-fluid -->
     </nav>
     
-    <div id = "map" style="width:100%; height:100%">
+    <div id = "map" style="width:100%; height:50%">
         
-    
+     
     
 </body>
     
