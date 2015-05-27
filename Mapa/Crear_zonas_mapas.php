@@ -1,8 +1,4 @@
 
-<!DOCTYPE html>
-<?php
-    include ("../Conexion/Datos_de_encuesta.php");
-?>
 
 
 <html>
@@ -73,11 +69,11 @@
               });
               
               
-      //      $("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
+         //   $("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
               
             google.maps.event.addListener(myCity, 'click', function(){
                 alert(myCity.center);
-                myCity.setMap(null);
+            //    myCity.setMap(null);
                 //$("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
             });  
              myCity.setMap(map);

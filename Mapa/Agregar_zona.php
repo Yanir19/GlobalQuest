@@ -19,7 +19,7 @@ else
 
 
 $datos = mysql_query("INSERT INTO `globalquest`.`zonas` (`Latitud`, `Longitud`, `Radio`) "
-        . "VALUES ('".$coordenadas [0]."', '".$coordenadas [1]."', '200') ",$conexion) 
+        . "VALUES ('".$coordenadas [0]."', '".$coordenadas [1]."', '200')  ",$conexion) 
         or die ('<p> no se ha podido ejecutar la setencia compruebe sintaxis <P>%s.  Error # '.mysql_errno(). ' .-'.mysql_errno());
 
 

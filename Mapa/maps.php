@@ -104,34 +104,43 @@
           };
 
          map =new google.maps.Map( $("#map")[0], mapProp);
-         listar();
+         
+          for(var i=0;i<arrayJS.length;i++)
+
+                {
+
+                    direccion = new google.maps.LatLng(arrayJS[i].toString(),arrayJS1[i].toString());
+                   listar(direccion);
+                }     
+                    
+                    
+        function listar(direccion){
+            
+            alert(direccion);
+            var myCity = new google.maps.Circle({
+                        center:direccion,
+                        radius:200,
+                        strokeColor:"#0000FF",
+                        strokeOpacity:0.8,
+                        strokeWeight:2,
+                        fillColor:"#0000FF",
+                        fillOpacity:0.4
+                      });
+
+
+                 //   $("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
+
+                    google.maps.event.addListener(myCity, 'click', function(){
+                        alert(myCity.center);
+                    //    myCity.setMap(null);
+                        //$("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
+                    });  
+                     myCity.setMap(map);
+        };        
+                    
     });
     
-    function listar()
-    {
-     
-        $.each(d, function(i, item){
-                   var direccion = new google.maps.LatLng(arrayJS[i],arrayJS1[i]);
-
-                    var myCity  = new google.maps.Marker({
-                                idMarcador:i,
-                                position:direccion,
-                                titulo: "hola"
-                            });
-                  //      alert(myCity.center);
-                   google.maps.event.addListener(myCity, 'click', function(event){
-                        alert(" id : " + myCity.idMarcador );
-                  /*      var  coordenadas = myCity.center;
-                        coordenadas = coordenadas.replace("(","");
-                        coordenadas = coordenadas.replace(")","");
-                        var lista = coordenadas.split(",");
-                        myCity.setMap(null);
-                      //  $("#contenedor").load("Eliminar_zona.php", {direccion:lista});*/
-                    }); 
-                        zonas_bd.push(myCity);
-                         myCity.setMap(map);
-        }
-    }
+    
     
     </script> 
     
