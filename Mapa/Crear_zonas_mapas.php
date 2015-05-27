@@ -1,4 +1,10 @@
 
+<!DOCTYPE html>
+<?php
+    include ("../Conexion/Datos_de_encuesta.php");
+?>
+
+
 <html>
 
 <head>

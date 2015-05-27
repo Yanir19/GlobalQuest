@@ -88,51 +88,54 @@
     <!----------------------------------------------------------------------->
     
 
-    <script>
-        
-     var zonas_bd= [];
-     var map;
-     
-     $(document).on("ready", function (){
-            
+ <script>
         var punto = new google.maps.LatLng(8.300586, -62.715552);
+       
+        var myCity;
+        var direccion;
+        var map;
+        
+        
+        function initialize()
+        {
+            var mapProp = {
+              center:punto,
+              zoom:14,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+              };
 
-        var mapProp = {
-          center:punto,
-          zoom:15,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-          };
-
-         map =new google.maps.Map( $("#map")[0], mapProp);
-         listar();
-    });
-    
-    function listar()
-    {
-     
-        $.each(d, function(i, item){
-                   var direccion = new google.maps.LatLng(arrayJS[i],arrayJS1[i]);
-
-                    var myCity  = new google.maps.Marker({
-                                idMarcador:i,
-                                position:direccion,
-                                titulo: "hola"
-                            });
-                  //      alert(myCity.center);
-                   google.maps.event.addListener(myCity, 'click', function(event){
-                        alert(" id : " + myCity.idMarcador );
-                  /*      var  coordenadas = myCity.center;
-                        coordenadas = coordenadas.replace("(","");
-                        coordenadas = coordenadas.replace(")","");
-                        var lista = coordenadas.split(",");
-                        myCity.setMap(null);
-                      //  $("#contenedor").load("Eliminar_zona.php", {direccion:lista});*/
-                    }); 
-                        zonas_bd.push(myCity);
-                         myCity.setMap(map);
+             map = new google.maps.Map(document.getElementById("map"),mapProp);
+                        
+            listar ();
         }
-    }
-    
+        
+        listar (){
+          for(var i =0;i<7;i++)
+
+            {
+
+                direccion = new google.maps.LatLng(arrayJS[i].toString(),arrayJS1[i].toString());
+                alert(arrayJS[i].toString() + " - " + arrayJS1[i].toString());
+                
+                myCity = new google.maps.Circle({
+                    center:direccion,
+                    radius:200,
+                    strokeColor:"#0000FF",
+                    strokeOpacity:0.8,
+                    strokeWeight:2,
+                    fillColor:"#0000FF",
+                    fillOpacity:0.4
+                  });
+
+                   google.maps.event.addListener(myCity, 'click', function(){
+                    alert(myCity.center);
+                  //  myCity.setMap(null);
+                });  
+
+                    myCity.setMap(map);
+            };
+        };
+            
     </script> 
     
     
