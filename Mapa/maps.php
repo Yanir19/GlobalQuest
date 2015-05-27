@@ -136,6 +136,52 @@
             };
         };
             
+
+        var mapProp = {
+          center:punto,
+          zoom:15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+
+         map =new google.maps.Map( $("#map")[0], mapProp);
+         
+          for(var i=0;i<arrayJS.length;i++)
+
+                {
+
+                    direccion = new google.maps.LatLng(arrayJS[i].toString(),arrayJS1[i].toString());
+                   listar(direccion);
+                }     
+                    
+                    
+        function listar(direccion){
+            
+            alert(direccion);
+            var myCity = new google.maps.Circle({
+                        center:direccion,
+                        radius:200,
+                        strokeColor:"#0000FF",
+                        strokeOpacity:0.8,
+                        strokeWeight:2,
+                        fillColor:"#0000FF",
+                        fillOpacity:0.4
+                      });
+
+
+                 //   $("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
+
+                    google.maps.event.addListener(myCity, 'click', function(){
+                        alert(myCity.center);
+                    //    myCity.setMap(null);
+                        //$("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
+                    });  
+                     myCity.setMap(map);
+        };        
+                    
+    });
+    
+    
+    
     </script> 
     
     
