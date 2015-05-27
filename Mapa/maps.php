@@ -1,3 +1,38 @@
+<?php  
+    $root = "localhost";
+    $user = "root";
+    $pass = "";
+    $base = "globalquest";
+    $tabla = "zonas";
+    $conexion = mysql_connect($root,$user,$pass);
+
+    if(!(mysql_select_db($base)))
+        print("<CENTER><h3> No se ha podido seleccionar la"
+            . " base de datos \"usuarios\": <P>%s". ' Error # '.mysql_errno(). ' .-'.mysql_errno() );
+    else
+        echo 'La conexion se ha realizado con exito <br />';
+
+
+   $datos = mysql_query("SELECT latitud,longitud FROM globalquest.zonas ",$conexion) 
+        or die ('<p> no se ha podido ejecutar la setencia compruebe sintaxis <P>%s.  Error # '.mysql_errno(). ' .-'.mysql_errno());
+   
+    $latitud;
+    $longitud;
+    $i=0;
+     while ( $arrayPHP = mysql_fetch_array($datos)){
+         $latitud[$i] = $arrayPHP ['latitud'];
+         $longitud[$i] = $arrayPHP ['longitud'];
+         $i++;
+     }
+                 
+     mysql_close();
+
+?>
+   
+       
+            
+
+
 <!DOCTYPE html>
 <html>
 
@@ -29,45 +64,79 @@
       src="http://code.jquery.com/jquery-2.0.3.min.js">
     </script>  
     
+    
+    
+    
+    <!----------------------------------------------------------------------->
+    
+    
+<script type="text/javascript">
+
+    // obtenemos el array de valores mediante la conversion a json del
+
+    // array de php
+
+    var arrayJS=<?php echo json_encode($latitud);?>;
+    var arrayJS1=<?php echo json_encode($longitud);?>;
+
+
+</script>
+    
+    
+    
+    
+    <!----------------------------------------------------------------------->
+    
 
     <script>
-        var punto = new google.maps.LatLng(8.300586, -62.715552);
-                var UCAB1=new google.maps.LatLng(8.300586, -62.715552);
-                var UCAB2=new google.maps.LatLng(8.302210, -62.707774);
-                var UCAB3=new google.maps.LatLng(8.293144, -62.709855);
-                var UCAB4=new google.maps.LatLng(8.295055, -62.718395);
-
-
-        function initialize()
-        {
-            var mapProp = {
-              center:punto,
-              zoom:16,
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-              };
-
-            var map=new google.maps.Map(document.getElementById("map"),mapProp);
-
-            var myTrip=[UCAB1,UCAB2,UCAB3,UCAB4];
-            var flightPath=new google.maps.Polygon({
-              path:myTrip,
-              strokeColor:"#0000FF",
-              strokeOpacity:0.8,
-              strokeWeight:2,
-              fillColor:"#0000FF",
-              fillOpacity:0.4
-              });
-
-            flightPath.setMap(map);
-
-            google.maps.event.addListener(flightPath, 'click', function(){
-                alert("Acabas de presionar en una zona de encuesta.");
-            });
         
-        }
+     var zonas_bd= [];
+     var map;
+     
+     $(document).on("ready", function (){
+            
+        var punto = new google.maps.LatLng(8.300586, -62.715552);
 
-    google.maps.event.addDomListener(window, 'load', initialize);
+        var mapProp = {
+          center:punto,
+          zoom:15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+
+         map =new google.maps.Map( $("#map")[0], mapProp);
+         listar();
+    });
+    
+    function listar()
+    {
+     
+        $.each(d, function(i, item){
+                   var direccion = new google.maps.LatLng(arrayJS[i],arrayJS1[i]);
+
+                    var myCity  = new google.maps.Marker({
+                                idMarcador:i,
+                                position:direccion,
+                                titulo: "hola"
+                            });
+                  //      alert(myCity.center);
+                   google.maps.event.addListener(myCity, 'click', function(event){
+                        alert(" id : " + myCity.idMarcador );
+                  /*      var  coordenadas = myCity.center;
+                        coordenadas = coordenadas.replace("(","");
+                        coordenadas = coordenadas.replace(")","");
+                        var lista = coordenadas.split(",");
+                        myCity.setMap(null);
+                      //  $("#contenedor").load("Eliminar_zona.php", {direccion:lista});*/
+                    }); 
+                        zonas_bd.push(myCity);
+                         myCity.setMap(map);
+        }
+    }
+    
     </script> 
+    
+    
+    
     
 </head>
 
@@ -77,6 +146,12 @@
    
     
 <body onload="initialize()"> 
+    
+    <section id="contenedor" style="border:solid 1px black;heigt:100px;">
+            
+            
+        </section>
+    
     
      <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -163,7 +238,7 @@
     
 </body>
     
-    <script src="../Administrador/js/jquery.js"></script>
+    <script src="../js/jquery.js"></script>
     <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 

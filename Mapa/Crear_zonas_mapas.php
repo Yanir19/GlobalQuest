@@ -10,7 +10,6 @@
 <head>
     
     
-    
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
@@ -18,12 +17,6 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="../css/estilos.css">
-    
-    <script type="text/javascript"  src="http://maps.googleapis.com/maps/api/js?sensor=false"> </script>   
-    
-    <script type="text/javascript"  src="http://code.jquery.com/jquery-2.0.3.min.js"> </script>  
-    
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
     
     
     <style type="text/css">
@@ -36,7 +29,13 @@
       #informacion{ height: 100%; float: left; }
     </style>
     
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?sensor=true">
+    </script>   
     
+    <script type="text/javascript"
+      src="http://code.jquery.com/jquery-2.0.3.min.js">
+    </script>  
     
 
     <script>
@@ -59,18 +58,10 @@
             coordenadas = coordenadas.replace("(","");
             coordenadas = coordenadas.replace(")","");
             var lista = coordenadas.split(",");
-            alert(lista[0]);
-            alert(lista[1]);
+            alert(lista[0] +" - " +lista[1] );
             var direccion = new google.maps.LatLng(lista[0],lista[1]);
-            //alert(direccion);
-       /*     
-           var marcador = new google.maps.Marker({
-             position:direccion,
-             map:map,
-             animation:google.maps.Animation.DROP,
-             draggable : false
-            });
-           */ 
+     
+     
             var myCity = new google.maps.Circle({
                 center:direccion,
                 radius:200,
@@ -81,12 +72,13 @@
                 fillOpacity:0.4
               });
               
-               var variable_java = "soy la variablr que buscas";
-            
-            $("#contenedor").load("Radio.php", {direccion:lista}); 
+              
+      //      $("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
               
             google.maps.event.addListener(myCity, 'click', function(){
+                alert(myCity.center);
                 myCity.setMap(null);
+                //$("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
             });  
              myCity.setMap(map);
         });
@@ -141,7 +133,7 @@
     </div><!-- /.container-fluid -->
     </nav>
     
-    <div id = "map" style="width:100%; height:50%">
+    <div id = "map" style="width:100%; height:100%">
         
      
     
