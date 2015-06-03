@@ -9,12 +9,13 @@ $tabla = "zonas";
 $conexion = mysql_connect($root,$user,$pass);
 
 $coordenadas = $_REQUEST['direccion'];
-    
-if(!(mysql_select_db($base)))
-    print("<CENTER><h3> No se ha podido seleccionar la"
-        . " base de datos \"usuarios\": <P>%s". ' Error # '.mysql_errno(). ' .-'.mysql_errno() );
-else
-    echo 'La conexion se ha realizado con exito <br />';
+ 
+
+if(!(mysql_select_db($base)));
+  /* print("<CENTER><h3> No se ha podido seleccionar la"
+        . " base de datos \"usuarios\": <P>%s". ' Error # '.mysql_errno(). ' .-'.mysql_errno() );**/
+
+
 
 echo $coordenadas [0];
 echo $coordenadas [1];

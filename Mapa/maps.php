@@ -88,14 +88,54 @@
     <!----------------------------------------------------------------------->
     
 
-    <script>
-        
-     var zonas_bd= [];
-     var map;
-     
-     $(document).on("ready", function (){
-            
+ <script>
         var punto = new google.maps.LatLng(8.300586, -62.715552);
+       
+        var myCity;
+        var direccion;
+        var map;
+        
+        
+        function initialize()
+        {
+            var mapProp = {
+              center:punto,
+              zoom:14,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+              };
+
+             map = new google.maps.Map(document.getElementById("map"),mapProp);
+                        
+            listar ();
+        }
+        
+        listar (){
+          for(var i =0;i<7;i++)
+
+            {
+
+                direccion = new google.maps.LatLng(arrayJS[i].toString(),arrayJS1[i].toString());
+                alert(arrayJS[i].toString() + " - " + arrayJS1[i].toString());
+                
+                myCity = new google.maps.Circle({
+                    center:direccion,
+                    radius:200,
+                    strokeColor:"#0000FF",
+                    strokeOpacity:0.8,
+                    strokeWeight:2,
+                    fillColor:"#0000FF",
+                    fillOpacity:0.4
+                  });
+
+                   google.maps.event.addListener(myCity, 'click', function(){
+                    alert(myCity.center);
+                  //  myCity.setMap(null);
+                });  
+
+                    myCity.setMap(map);
+            };
+        };
+            
 
         var mapProp = {
           center:punto,
