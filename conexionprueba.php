@@ -17,11 +17,11 @@ if (isset($_POST["enviar_btns"])){
  class Conectar{ 
     public function con(){
         
-        $cadena="'localhost','root','1234'";
+        $cadena="'localhost','root',''";
 		$user = "root";
-		$pass = "1234";
+		$pass = "";
 		$server = "localhost";
-		$db = "mydb";
+		$db = "globalquest";
         $con = mysql_connect($server,$user,$pass) or die ('<!DOCTYPE html>
                                             <HTML>
                                                <HEAD>
@@ -84,6 +84,71 @@ if (isset($_POST["enviar_btns"])){
         
             return false;
      }
+	 
+	 
+	  public function verificar_circulo($latitudX,$longitudY,$radio,$x1,$y1){
+           
+		
+     }
+	 
+	 
+	  public function haversineGreatCircleDistance(
+			  $latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo, $earthMeanRadius  )
+			{
+				$deltaLatitude = deg2rad($latitudeTo - $latitudeFrom);
+				$deltaLongitude = deg2rad($longitudeTo - $longitudeFrom);
+				$a = sin($deltaLatitude / 2) * sin($deltaLatitude / 2) +
+					 cos(deg2rad($latitudeFrom)) * cos(deg2rad(latitudeTo)) *
+					 sin($deltaLongitude / 2) * sin($deltaLongitude / 2);
+				$c = 2 * atan2(sqrt($a), sqrt(1-$a));
+				return $earthMeanRadius * $c;
+			}
+		
+	 
+        public function verificar_localizacion($latitud,$longitud){
+            $sql =sprintf
+          ( " SELECT z.Latitud, z.Longitud, z.Radio FROM zonas AS z, zona_usuario AS z_u WHERE z.idZonas = z_u.idZona AND z_u.idUsuario = %s; ",$_SESSION['idusuario']
+             );
+          
+            $res = mysql_query($sql,parent::con());
+            while($reg = mysql_fetch_assoc($res))
+            {
+                echo '<script type= "text/javascript"> alert("hola"); </script>';
+				echo $reg['Latitud'];
+                                echo $reg['Longitud'];
+                                echo $reg['Radio'];
+                                $la = $reg['Latitud'];
+                                $lo = $reg['Longitud'];
+                                $ra = $reg['Radio'];
+                                echo '<script type= "text/javascript"> alert("Lat: "+$la+", Lon: "+$lo+", Rad: "+$ra); </script>';
+				
+				/*if(sqrt((pow((floatval($reg['Latitud'])-$latitud),2)) + (pow((floatval($reg['Longitud'])- $longitud),2))) <= floatval($reg['Radio'])){
+					return true;*/	
+					
+					$deltaLatitude = deg2rad($latitud - floatval($reg['Latitud']));
+					$deltaLongitude = deg2rad($longitud - floatval($reg['Longitud']));
+					$a = sin($deltaLatitude / 2) * sin($deltaLatitude / 2) +
+						 cos(deg2rad(floatval($reg['Latitud']))) * cos(deg2rad($latitud)) *
+						 sin($deltaLongitude / 2) * sin($deltaLongitude / 2);
+					$c = 2 * atan2(sqrt($a), sqrt(1-$a));
+					$distancia= 6371 * $c;
+					
+					if($distancia <= floatval($reg['Radio'])){
+						return true;
+					}
+				/*if(haversineGreatCircleDistance(floatval($reg['Latitud']),floatval($reg['Longitud']),$latitud,$longitud,floatval(6371))<= floatval($reg['Radio'])){
+					return true;*/
+				
+				
+                
+			} 
+        
+            return false;
+     }
+	 
+	 
+	
+	 	
 	 
 	 
 	 

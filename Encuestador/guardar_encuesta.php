@@ -1,7 +1,31 @@
 <?php
-
+session_start();
 require_once '../Conexion/BD_Conector.php';
+include("../conexionprueba.php"); 
 
+$idUsuario = $_SESSION['idusuario'];
+if (isset($_POST['longitud'])){ 
+    $long = $_POST["longitud"];
+        echo "longitud:  $long";
+	}else{
+	echo " NO LLEGO";
+	}
+   
+   if (isset($_POST['latitud'])){ 
+    
+    $lat = $_POST["latitud"];
+    echo "latitud: $lat";
+	}else{
+	echo " NO LLEGO";
+	}
+    
+	
+	$obj=new Trabajo();
+	if($obj->verificar_localizacion(floatval($lat),floatval($long))){
+       echo "ESTOY DENTRO DE LA ZONA";
+      
+        
+		
 //------- Se obtienen las variables -------//
 
 // DATOS ENCUESTADO
@@ -42,12 +66,14 @@ echo "<br>DATOS ENCUESTADO<br>edad = $edad<br>sexo = $sexo<br>escuela = $escuela
 if (!$edad || !$sexo || !$escuela || !$respuesta1 || !$descripcion1 || !$respuesta_2 || !$frecuencia_2 || !$otros_examenes_2 || !$razones_ning_exam_2 || !$primero_que_piensa_3 || !$respuesta_3 || !$reaccion_3 || !$respuesta_4 || !$medio_4 || !$redes_4 || !$focus_group_4){
     echo '<script type= "text/javascript"> alert("NOTA: Todos los campos son requeridos para guardarse en la BD."); </script>';
 }else{
+
+
     if ($email){
-        $query = "INSERT INTO encuesta(respuesta_1, descripcion_1, respuesta_2, frecuencia_2, otros_examenes_2, razones_ning_exam_2, primero_que_piensa_3, respuesta_3, reaccion_3, respuesta_4, medio_4, redes_4, focus_group_4, edad, sexo, escuela, email, Usuario_idUsuario)"
-                ."VALUES ('$respuesta1', '$descripcion1', '$respuesta_2', '$frecuencia_2', '$otros_examenes_2', '$razones_ning_exam_2', '$primero_que_piensa_3', '$respuesta_3', '$reaccion_3', '$respuesta_4', '$medio_4', '$redes_4', '$focus_group_4', '$edad', '$sexo', '$escuela', '$email', 0)";
+        $query = "INSERT INTO encuesta(respuesta_1, descripcion_1, respuesta_2, frecuencia_2, otros_examenes_2, razones_ning_exam_2, primero_que_piensa_3, respuesta_3, reaccion_3, respuesta_4, medio_4, redes_4, focus_group_4, edad, sexo, escuela, email, Latitud,Longitud,Usuario_idUsuario)"
+                ."VALUES ('$respuesta1', '$descripcion1', '$respuesta_2', '$frecuencia_2', '$otros_examenes_2', '$razones_ning_exam_2', '$primero_que_piensa_3', '$respuesta_3', '$reaccion_3', '$respuesta_4', '$medio_4', '$redes_4', '$focus_group_4', '$edad', '$sexo', '$escuela', '$email','$lat', '$long', '$idUsuario')";
     }else{
-        $query = "INSERT INTO encuesta(respuesta_1, descripcion_1, respuesta_2, frecuencia_2, otros_examenes_2, razones_ning_exam_2, primero_que_piensa_3, respuesta_3, reaccion_3, respuesta_4, medio_4, redes_4, focus_group_4, edad, sexo, escuela, Usuario_idUsuario)"
-                ."VALUES ('$respuesta1', '$descripcion1', '$respuesta_2', '$frecuencia_2', '$otros_examenes_2', '$razones_ning_exam_2', '$primero_que_piensa_3', '$respuesta_3', '$reaccion_3', '$respuesta_4', '$medio_4', '$redes_4', '$focus_group_4', '$edad', '$sexo', '$escuela', 0)";
+        $query = "INSERT INTO encuesta(respuesta_1, descripcion_1, respuesta_2, frecuencia_2, otros_examenes_2, razones_ning_exam_2, primero_que_piensa_3, respuesta_3, reaccion_3, respuesta_4, medio_4, redes_4, focus_group_4, edad, sexo, escuela,Latitud,Longitud, Usuario_idUsuario)"
+                ."VALUES ('$respuesta1', '$descripcion1', '$respuesta_2', '$frecuencia_2', '$otros_examenes_2', '$razones_ning_exam_2', '$primero_que_piensa_3', '$respuesta_3', '$reaccion_3', '$respuesta_4', '$medio_4', '$redes_4', '$focus_group_4', '$edad', '$sexo', '$escuela','$lat', '$long', '$idUsuario')";
     }
     
     
@@ -58,10 +84,27 @@ if (!$edad || !$sexo || !$escuela || !$respuesta1 || !$descripcion1 || !$respues
     {
       die('Error al insertar data: ' . mysql_error());
     }
-
+	echo '<script> alert("Encuesta guardada satisfactoriamente"); </script>';
     //header("Location: ../Encuestador/Realizar_Encuesta.php?ok");
     
 
 }
 
 mysql_close($conexion);
+		
+		
+		
+		
+     }else{
+	echo '<script> alert("Encuesta no valida... No estas en tu zona!"); </script>';
+	
+    //header("Location: ../Encuestador/Realizar_Encuesta.php?ok");
+    
+	 }
+
+    
+
+
+
+
+?>

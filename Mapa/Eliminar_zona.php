@@ -19,7 +19,7 @@ else
 echo $coordenadas [0];
 echo $coordenadas [1];
 
-$datos = mysql_query("DELETE FROM `globalquest`.`zonas` WHERE `latitud`= '".$coordenadas [0]."' and `lontiud`= '".$coordenadas [1]."'; ") 
+$datos = mysql_query("DELETE FROM `globalquest`.`zonas` WHERE `Latitud`= '".$coordenadas [0]."' and `Longitud`= '".$coordenadas [1]."'; ") 
         or die ('<p> no se ha podido ejecutar la setencia compruebe sintaxis <P>%s.  Error # '.mysql_errno(). ' .-'.mysql_errno());
 
 

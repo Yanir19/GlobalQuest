@@ -13,7 +13,7 @@ if(isset($_POST["pwd"]) AND ($_POST["n_usuario"])) {
 			header("Location: http://localhost/GlobalQuest/Mapa/ejemploderejillas.php");
 			
 		}else{
-			header("Location: http://localhost/GlobalQuest/Encuestador/Realizar_Encuesta.php");
+			header("Location: ../GlobalQuest/Encuestador/Realizar_Encuesta.php");
 		}
         
      }

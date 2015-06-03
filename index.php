@@ -1,4 +1,10 @@
 
+<?php
+session_start();
+ if (isset($_SESSION["latitud"]))
+		echo $_SESSION["latitud"];
+
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -10,12 +16,17 @@
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="css/textoestilos1.css" rel="stylesheet">
 	<link href="css/estilos2.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	
 	
 
   
   </head>
-  <body onLoad="localizame()">
+ 
+  
+  
+  <body >
       
 		  <!-- Cabecera de la pagina -->
     
@@ -85,19 +96,19 @@
       </div>
    </footer>
   
-      
-	
-		
+     
 		
       <section class="main">
       </section>
 	  
 	  
-	  
-	  
+
 	  
     
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
+
+
+	

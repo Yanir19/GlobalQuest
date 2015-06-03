@@ -15,8 +15,7 @@
         <header>
           <title>Crear Usuario</title>
         </header>
-        <from name ="datos_de_usuarios" type="sumit" action ="../Conexion/BD_Conector.php" method ="POST">
-        
+        <form method="POST" action="guardar_usuario.php"> 
             <div class="container" >
                 <div class="col-xs-12 col-sm-12">   
                     <div class="panel panel-danger ">
@@ -28,74 +27,27 @@
                             <h5>Apellido</h5>
                             <input type="text" class="form-control" name="apellido" id="apellido" required>
                             <br>
-                            <h5>Escuela</h5>
-                            <input type="text" class="form-control" name="escuela" id="escuela" required>
+                            <h5>Fecha de Nacimiento</h5>
+                            <input type="date" class="form-control" name="nacimiento" id="nacimiento" required>
                             <br>
-                            <h5>Edad</h5>
-                            <input type="text" class="form-control" name="edad" id="edad" required>
-                            <br>
-                            <h5>Sexo</h5>
-                            <select class="form-control" name="sexo" id='sexo' required>
+                            <h5>Rol</h5>
+                            <select class="form-control" name="rol" id='rol' required>
                                 <option  value=""></option>
-                                <option  value="M">Masculino</option>
-                                <option  value="F">Femenino</option>
+                                <option  value="1">Encuestador</option>
+                                <option  value="2">Administrador</option>
                             </select>
                             <br>
-                            <h5>Escuela</h5>
-                            <input type="text" class="form-control" name="escuela" id="escuela" required>
+                            <h5>Contraseña</h5>
+                            <input type="text" class="form-control" name="passwd" id="passwd" required>
                             <br>
-                            <h5>E-mail (Opcional)</h5>
-                            <input type="text" class="form-control" name="email" id="email" >
-                            <nav>
-                                <ul class="pager">
-                                    <li><button type="button" class="btn btn-default" onclick="mostrar_ocultar(1)">SIGUIENTE</button></li>
-                                </ul>
-                            </nav>
+                            <div style="text-align: center">
+                                <button type="submit" class="btn btn-danger">GUARDAR</button>
+                            </div>    
                         </div>
                     </div>
                 </div>       
             </div>  
-      
-      
-       <div class="container">
-           <div class="col-lg-6">
-                <div class="panel panel-danger">
-                    <div class="panel-heading">Datos del usario</div>
-                        <div class="panel-body">
-                            <form action="Encuesta_1.php" method="post" >
-                                <div class="input-group">
-                                    <input type="text" name="nombre" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1">
-                                </div>
-                               <div class="input-group">
-                                   <input type="text" name="edad" class="form-control" placeholder="Edad" aria-describedby="basic-addon1">
-                                </div>
-                               <br>
-                               
-                               <h5> Sexo </h5>
-                               <ul class="list-group">
-                                    <li class="list-group-item"> <div class="radio">
-                                         <label><input type="radio" name="sexo" value="Masculino">Masculino</label>
-                                       </div></li>
-                                    <li class="list-group-item"><div class="radio" >
-                                         <label><input type="radio" name="sexo" value="Femenino" >Femenino</label>
-                                       </div></li>
-                                </ul>
-
-                               <br>
-                               <div class="input-group">
-                                    <input type="text" class="form-control" name="escuela" placeholder="Escuela" aria-describedby="basic-addon1">
-                                </div>
-
-                               <br>
-                               <input type="submit" name="enviar" value="enviar">
-
-                            </form >
-                         </div>
-
-                </div>
-            </div>     
-        </div>
-    </from>
+    </form>
   
   
       <section class="main">

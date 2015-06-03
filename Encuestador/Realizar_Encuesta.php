@@ -38,6 +38,7 @@ function mostrar_ocultar(pregunta){
             document.getElementById("parte4").style.display = "block";
             break;
     }  
+								
 }
 /*
 function validar(){
@@ -45,6 +46,8 @@ function validar(){
     
     }
 }*/
+
+
 
 
 </script>
@@ -66,8 +69,38 @@ function validar(){
             <div class="container">
             </div>
         </header>
-        
-        <?php require_once('../Modulos/navbar.php'); ?>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">GobalQuest</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Mapa <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Encuestas</a></li>       
+                    </ul>
+                    <form class="navbar-form navbar-left navbar-right" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Seudonimo">
+                            <input type="text" class="form-control" placeholder="contraseña">
+                        </div>
+                        <button type="submit" class="btn btn-default">Ingresar</button>
+                    </form>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+        <br>
         
         <form method="POST" action="../Encuestador/guardar_encuesta.php"> 
             
@@ -77,6 +110,14 @@ function validar(){
                     <div class="panel panel-danger ">
                         <div class="panel-heading ">Datos del Encuestado</div>
                         <div class="panel-body">
+						
+						<h5> Ubicacion</h5>
+                                                <button type="button" onclick="getLocation()">Try It</button>
+
+							<p id="demo"></p>
+								<input type="text" class="form-control" name="latitud" id="latitud" readonly required >
+								<input type="text" class="form-control" name="longitud" id="longitud" readonly  required>
+								
                             <h5>Edad</h5>
                             <input type="text" class="form-control" name="edad" id="edad" required>
                             <br>
@@ -289,10 +330,12 @@ function validar(){
                                 <option  value="S">SI</option>
                                 <option  value="N">NO</option>
                             </select>
+							
+							
                             <nav>
                                 <ul class="pager">
                                     <li><button type="button" class="btn btn-default" onclick="mostrar_ocultar(3)">ANTERIOR</button></li>
-                                    <li><button type="submit" class="btn btn-danger" >GUARDAR </button></li>
+                                    <li><button type="submit"  class="btn btn-danger" >GUARDAR </button></li>
                                 </ul>
                             </nav>
                         </div>
@@ -301,7 +344,30 @@ function validar(){
             </div> 
 
         </form> 
+		
+		<button type="submit" onClick="getLocation" class="btn btn-danger" >Coordenadas </button>
+                               
+		
+		<script>
+								var x = document.getElementById("latitud");
+								var y = document.getElementById("longitud");
+								var z = document.getElementById("demo");
+								function getLocation() {
+									if (navigator.geolocation) {
+										navigator.geolocation.getCurrentPosition(showPosition);
+									} else { 
+										x.innerHTML = "Geolocation is not supported by this browser.";
+									}
+								}
 
+								function showPosition(position) {
+									z.innerHTML = "COORDENADAS";
+									x.value = position.coords.latitude; 
+									y.value =position.coords.longitude;	
+									
+								}
+		</script>
+		
 
         <section class="main">
 
@@ -311,3 +377,7 @@ function validar(){
         <script src="../js/bootstrap.min.js"></script>
     </body>
 </html>
+
+
+
+

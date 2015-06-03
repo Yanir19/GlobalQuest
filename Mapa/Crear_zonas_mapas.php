@@ -69,12 +69,12 @@
               });
               
               
-         //   $("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
+            $("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
               
             google.maps.event.addListener(myCity, 'click', function(){
                 alert(myCity.center);
-            //    myCity.setMap(null);
-                //$("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
+                myCity.setMap(null);
+                $("#contenedor").load("Eliminar_zona.php", {direccion:lista}); 
             });  
              myCity.setMap(map);
         });
@@ -135,7 +135,7 @@
     
 </body>
     
-    <script src="../Administrador/js/jquery.js"></script>
+    <script src="../js/jquery.js"></script>
     <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
