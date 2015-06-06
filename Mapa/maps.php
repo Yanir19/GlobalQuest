@@ -88,7 +88,8 @@
     <!----------------------------------------------------------------------->
     
 
- <script>
+
+    <script>
         var punto = new google.maps.LatLng(8.300586, -62.715552);
        
         var myCity;
@@ -104,86 +105,36 @@
               mapTypeId: google.maps.MapTypeId.ROADMAP
               };
 
-             map = new google.maps.Map(document.getElementById("map"),mapProp);
+            map=new google.maps.Map(document.getElementById("map"),mapProp);
                         
-            listar ();
-        }
-        
-        listar (){
-          for(var i =0;i<7;i++)
-
-            {
-
-                direccion = new google.maps.LatLng(arrayJS[i].toString(),arrayJS1[i].toString());
-                alert(arrayJS[i].toString() + " - " + arrayJS1[i].toString());
-                
-                myCity = new google.maps.Circle({
-                    center:direccion,
-                    radius:200,
-                    strokeColor:"#0000FF",
-                    strokeOpacity:0.8,
-                    strokeWeight:2,
-                    fillColor:"#0000FF",
-                    fillOpacity:0.4
-                  });
-
-                   google.maps.event.addListener(myCity, 'click', function(){
-                    alert(myCity.center);
-                  //  myCity.setMap(null);
-                });  
-
-                    myCity.setMap(map);
-            };
-        };
-            
-
-        var mapProp = {
-          center:punto,
-          zoom:15,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-          };
-
-         map =new google.maps.Map( $("#map")[0], mapProp);
-         
-          for(var i=0;i<arrayJS.length;i++)
+                 for(var i=0;i<arrayJS.length;i++)
 
                 {
-
                     direccion = new google.maps.LatLng(arrayJS[i].toString(),arrayJS1[i].toString());
-                   listar(direccion);
-                }     
-                    
-                    
-        function listar(direccion){
+                    listar(direccion);
+                }    
+                
+                 function listar(direccion){
             
-            alert(direccion);
-            var myCity = new google.maps.Circle({
-                        center:direccion,
-                        radius:200,
-                        strokeColor:"#0000FF",
-                        strokeOpacity:0.8,
-                        strokeWeight:2,
-                        fillColor:"#0000FF",
-                        fillOpacity:0.4
-                      });
+                    var myCity = new google.maps.Circle({
+                                center:direccion,
+                                radius:200,
+                                strokeColor:"#0000FF",
+                                strokeOpacity:0.8,
+                                strokeWeight:2,
+                                fillColor:"#0000FF",
+                                fillOpacity:0.4
+                              });
 
-
-                 //   $("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
-
-                    google.maps.event.addListener(myCity, 'click', function(){
-                        alert(myCity.center);
-                    //    myCity.setMap(null);
-                        //$("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
-                    });  
-                     myCity.setMap(map);
-        };        
-                    
-    });
-    
-    
-    
+                            google.maps.event.addListener(myCity, 'click', function(){
+                                alert(myCity.center);
+                            });  
+                             myCity.setMap(map);
+                };        
+                     
+        }
+    google.maps.event.addDomListener(window, 'load', initialize);
     </script> 
-    
     
     
     

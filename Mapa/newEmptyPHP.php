@@ -103,7 +103,7 @@
        
         var myCity;
         var direccion;
-        
+        var map;
         
         
         function initialize()
@@ -114,25 +114,38 @@
               mapTypeId: google.maps.MapTypeId.ROADMAP
               };
 
-            var map=new google.maps.Map(document.getElementById("map"),mapProp);
+            map=new google.maps.Map(document.getElementById("map"),mapProp);
                         
-                  for(var i=0;i<arrayJS.length;i++)
+                 for(var i=0;i<arrayJS.length;i++)
 
                 {
-
                     direccion = new google.maps.LatLng(arrayJS[i].toString(),arrayJS1[i].toString());
+                    listar(direccion);
+                }    
+                
+                 function listar(direccion){
+            
+                    alert(direccion);
+                    var myCity = new google.maps.Circle({
+                                center:direccion,
+                                radius:200,
+                                strokeColor:"#0000FF",
+                                strokeOpacity:0.8,
+                                strokeWeight:2,
+                                fillColor:"#0000FF",
+                                fillOpacity:0.4
+                              });
 
-                    myCity = new google.maps.Circle({
-                        center:direccion,
-                        radius:200,
-                        strokeColor:"#0000FF",
-                        strokeOpacity:0.8,
-                        strokeWeight:2,
-                        fillColor:"#0000FF",
-                        fillOpacity:0.4
-                      });
-                        myCity.setMap(map);
-                }     
+
+                         //   $("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
+
+                            google.maps.event.addListener(myCity, 'click', function(){
+                                alert(myCity.center);
+                            //    myCity.setMap(null);
+                                //$("#contenedor").load("Agregar_zona.php", {direccion:lista}); 
+                            });  
+                             myCity.setMap(map);
+                };        
                      
         }
     google.maps.event.addDomListener(window, 'load', initialize);
